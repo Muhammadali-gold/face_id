@@ -77,8 +77,10 @@ def main():
             elif has_multiple_face(file_2):
                 st.error("Second image has multiple faces.")
             else:
-                score = get_similarity(file_1, file_2)
-                st.metric("Similarity", f"{score:.2f}")
-
+                try:
+                    score = get_similarity(file_1, file_2)
+                    st.metric("Similarity", f"{score:.2f}")
+                except ValueError as e:
+                    st.error(str(e))
 if __name__ == '__main__':
     main()
