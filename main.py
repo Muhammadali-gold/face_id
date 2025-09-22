@@ -14,7 +14,7 @@ def get_embedding(img_path):
     # Detect face and crop
     face = mtcnn(img)
     if face is None:
-        raise ValueError(f"No face detected in {img_path}")
+        raise ValueError(f"No face detected in one of images")
     # Get embedding
     with torch.no_grad():
         embedding = resnet(face.unsqueeze(0))
